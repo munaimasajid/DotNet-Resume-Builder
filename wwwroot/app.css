@@ -1,0 +1,261 @@
+/* =========================
+   GLOBAL STYLES
+========================= */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f6f8;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+.navbar {
+    background: #2c3e50;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .navbar h1 {
+        margin: 0;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .navbar a {
+        color: white;
+        margin-left: 20px;
+        font-weight: 500;
+    }
+
+        .navbar a:hover {
+            color: #3498db;
+        }
+
+/* =========================
+   HERO SECTION (HOME)
+========================= */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(120deg, #2c3e50, #3498db);
+    color: white;
+}
+
+    .hero h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+    }
+
+    .hero p {
+        font-size: 18px;
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
+.hero-buttons {
+    margin-top: 30px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.btn-primary,
+.btn-outline {
+    padding: 12px 25px;
+    margin: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: white;
+    color: #2c3e50;
+}
+
+    .btn-primary:hover {
+        background: #f4f6f8;
+    }
+
+.btn-outline {
+    border: 2px solid white;
+    color: white;
+}
+
+    .btn-outline:hover {
+        background: white;
+        color: #2c3e50;
+    }
+
+/* =========================
+   FEATURES (HOME)
+========================= */
+.features {
+    display: flex;
+    justify-content: space-around;
+    padding: 60px 20px;
+    background: white;
+}
+
+.feature-card {
+    max-width: 260px;
+    background: #f9fafc;
+    padding: 25px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+}
+
+    .feature-card h3 {
+        color: #2c3e50;
+        margin-bottom: 10px;
+    }
+
+    .feature-card p {
+        font-size: 14px;
+        color: #555;
+    }
+
+/* =========================
+   FORM (CREATE RESUME)
+========================= */
+.form-container {
+    max-width: 720px;
+    margin: 50px auto;
+    background: white;
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+    .form-container h2 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 30px;
+    }
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+    .form-group label {
+        font-weight: 600;
+        display: block;
+        margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+    }
+
+    .form-group textarea {
+        min-height: 90px;
+        resize: vertical;
+    }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+/* Validation */
+.validation-message {
+    color: red;
+    font-size: 13px;
+}
+
+/* =========================
+   RESUME PREVIEW
+========================= */
+.resume {
+    max-width: 800px;
+    margin: 40px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.15);
+}
+
+    .resume h1 {
+        color: #2c3e50;
+        margin-bottom: 5px;
+    }
+
+    .resume p {
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    .resume h3 {
+        margin-top: 25px;
+        color: #3498db;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 5px;
+    }
+
+    .resume pre {
+        font-family: inherit;
+        white-space: pre-wrap;
+        font-size: 14px;
+    }
+
+/* =========================
+   TEMPLATES PAGE
+========================= */
+.templates {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 50px;
+}
+
+.template-card {
+    background: white;
+    width: 260px;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+    .template-card:hover {
+        transform: translateY(-6px);
+    }
+
+    .template-card h3 {
+        color: #2c3e50;
+        margin-bottom: 10px;
+    }
+
+/* =========================
+   FOOTER
+========================= */
+.footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 60px;
+}

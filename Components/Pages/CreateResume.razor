@@ -1,0 +1,93 @@
+﻿@page "/create"
+@rendermode InteractiveServer
+@using resume.Services
+@using resume.Models
+@inject ResumeService ResumeService
+@inject NavigationManager Nav
+
+<div class="container mt-4">
+    <div class="card p-4 shadow-sm">
+        <h2 class="text-center mb-4">Create Resume</h2>
+
+        <EditForm Model="ResumeService.Resume" OnValidSubmit="GoToPreview">
+            <DataAnnotationsValidator />
+
+            <!-- Full Name -->
+            <div class="mb-3">
+                <label class="form-label">Full Name</label>
+                <InputText class="form-control" @bind-Value="ResumeService.Resume.Name" />
+                <ValidationMessage For="@(() => ResumeService.Resume.Name)" />
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <InputText class="form-control" @bind-Value="ResumeService.Resume.Email" />
+                <ValidationMessage For="@(() => ResumeService.Resume.Email)" />
+            </div>
+
+            <!-- Phone -->
+            <div class="mb-3">
+                <label class="form-label">Phone</label>
+                <InputText class="form-control" @bind-Value="ResumeService.Resume.Phone" />
+                <ValidationMessage For="@(() => ResumeService.Resume.Phone)" />
+            </div>
+
+            <!-- Career Objective -->
+            <div class="mb-3">
+                <label class="form-label">Career Objective</label>
+                <InputTextArea class="form-control" rows="3" @bind-Value="ResumeService.Resume.Objective" />
+                <ValidationMessage For="@(() => ResumeService.Resume.Objective)" />
+            </div>
+
+            <!-- Education -->
+            <div class="mb-3">
+                <label class="form-label">Education</label>
+                <InputTextArea class="form-control" rows="3" @bind-Value="ResumeService.Resume.Education" />
+                <ValidationMessage For="@(() => ResumeService.Resume.Education)" />
+            </div>
+
+            <!-- Skills -->
+            <div class="mb-3">
+                <label class="form-label">Skills</label>
+                <InputTextArea class="form-control" rows="3" @bind-Value="ResumeService.Resume.Skills" />
+                <ValidationMessage For="@(() => ResumeService.Resume.Skills)" />
+            </div>
+
+            <!-- Experience -->
+            <div class="mb-3">
+                <label class="form-label">Experience</label>
+                <InputTextArea class="form-control" rows="3" @bind-Value="ResumeService.Resume.Experience" />
+                <ValidationMessage For="@(() => ResumeService.Resume.Experience)" />
+            </div>
+
+            <!-- Achievements -->
+            <div class="mb-3">
+                <label class="form-label">Achievements (one per line)</label>
+                <InputTextArea class="form-control" rows="3" @bind-Value="ResumeService.Resume.Achievements" />
+                <ValidationMessage For="@(() => ResumeService.Resume.Achievements)" />
+            </div>
+
+            <!-- Template Selection -->
+            <div class="mb-3">
+                <label class="form-label">Select Template</label>
+                <InputSelect class="form-select" @bind-Value="ResumeService.Resume.Template">
+                    <option value="classic">Classic</option>
+                    <option value="modern">Modern</option>
+                </InputSelect>
+            </div>
+
+            <!-- Submit Button -->
+            <button class="btn btn-primary w-100" type="submit">
+                Preview Resume
+            </button>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    void GoToPreview()
+    {
+        Nav.NavigateTo("/preview");
+    }
+}

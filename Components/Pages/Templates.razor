@@ -1,0 +1,94 @@
+﻿@page "/templates"
+@rendermode InteractiveServer
+@using resume.Services
+@inject ResumeService ResumeService
+@inject NavigationManager Nav
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Available Resume Templates</h2>
+    <p class="text-center text-muted">Preview the Classic and Modern styles below</p>
+
+    <div class="row">
+        <!-- Classic Template Preview -->
+        <div class="col-md-6">
+            <div class="resume-preview classic-template">
+             
+                <h1>@ResumeService.Resume.Name</h1>
+                <p>@ResumeService.Resume.Email | @ResumeService.Resume.Phone</p>
+
+                <h3>Career Objective</h3>
+                <p style="white-space: pre-line;">@ResumeService.Resume.Objective</p>
+
+                <h3>Education</h3>
+                <p style="white-space: pre-line;">@ResumeService.Resume.Education</p>
+
+                <h3>Skills</h3>
+                <p style="white-space: pre-line;">@ResumeService.Resume.Skills</p>
+
+                <h3>Experience</h3>
+                <p style="white-space: pre-line;">@ResumeService.Resume.Experience</p>
+
+                <h3>Achievements</h3>
+                <ul>
+                    @foreach (var a in AchievementList)
+                    {
+                        <li>@a</li>
+                    }
+                </ul>
+            </div>
+            <div class="text-center mt-3">
+                <button class="btn btn-primary" @onclick="@(() => SelectTemplate("classic"))">
+                    Use Classic Template
+                </button>
+            </div>
+        </div>
+
+        <!-- Modern Template Preview -->
+        <div class="col-md-6">
+            <div class="resume-preview modern-template">
+              
+                <h1>@ResumeService.Resume.Name</h1>
+                <p><b>Email:</b> @ResumeService.Resume.Email</p>
+                <p><b>Phone:</b> @ResumeService.Resume.Phone</p>
+
+                <h3>Career Objective</h3>
+                <p style="white-space: pre-line;">@ResumeService.Resume.Objective</p>
+
+                <h3>Professional Experience</h3>
+                <p style="white-space: pre-line;">@ResumeService.Resume.Experience</p>
+
+                <h3>Skills</h3>
+                <p style="white-space: pre-line;">@ResumeService.Resume.Skills</p>
+
+                <h3>Education</h3>
+                <p style="white-space: pre-line;">@ResumeService.Resume.Education</p>
+
+                <h3>Achievements</h3>
+                <ul>
+                    @foreach (var a in AchievementList)
+                    {
+                        <li>@a</li>
+                    }
+                </ul>
+            </div>
+            <div class="text-center mt-3">
+                <button class="btn btn-primary" @onclick="@(() => SelectTemplate("modern"))">
+                    Use Modern Template
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    string[] AchievementList =>
+        string.IsNullOrWhiteSpace(ResumeService.Resume.Achievements)
+            ? Array.Empty<string>()
+            : ResumeService.Resume.Achievements.Split('\n', StringSplitOptions.RemoveEmptyEntries);
+
+    void SelectTemplate(string template)
+    {
+        ResumeService.Resume.Template = template;
+        Nav.NavigateTo("/preview");
+    }
+}

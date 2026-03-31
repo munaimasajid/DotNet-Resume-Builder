@@ -1,0 +1,118 @@
+﻿@page "/preview"
+@rendermode InteractiveServer
+@using resume.Services
+@inject ResumeService ResumeService
+
+<div class="container mt-4">
+    <div class="card p-4 shadow-sm">
+        <h2 class="text-center mb-4 no-print">Resume Preview</h2>
+        <hr />
+
+        @if (ResumeService.Resume.Template == "classic")
+        {
+            <div class="classic-template">
+                <h1 class="resume-name">@ResumeService.Resume.Name</h1>
+                <p class="resume-contact">@ResumeService.Resume.Email | @ResumeService.Resume.Phone</p>
+
+                <section>
+                    <h3>Career Objective</h3>
+                    <p class="resume-section" style="white-space: pre-line;">
+                        @ResumeService.Resume.Objective
+                    </p>
+                </section>
+
+                <section>
+                    <h3>Education</h3>
+                    <p class="resume-section" style="white-space: pre-line;">
+                        @ResumeService.Resume.Education
+                    </p>
+                </section>
+
+                <section>
+                    <h3>Skills</h3>
+                    <p class="resume-section" style="white-space: pre-line;">
+                        @ResumeService.Resume.Skills
+                    </p>
+                </section>
+
+                <section>
+                    <h3>Experience</h3>
+                    <p class="resume-section" style="white-space: pre-line;">
+                        @ResumeService.Resume.Experience
+                    </p>
+                </section>
+
+                <section>
+                    <h3>Achievements</h3>
+                    <ul>
+                        @foreach (var a in AchievementList)
+                        {
+                            <li>@a</li>
+                        }
+                    </ul>
+                </section>
+            </div>
+        }
+        else if (ResumeService.Resume.Template == "modern")
+        {
+            <div class="modern-template">
+                <header class="modern-header">
+                    <h1 class="resume-name">@ResumeService.Resume.Name</h1>
+                    <p><b>Email:</b> @ResumeService.Resume.Email</p>
+                    <p><b>Phone:</b> @ResumeService.Resume.Phone</p>
+                </header>
+                <hr />
+
+                <section>
+                    <h3>Career Objective</h3>
+                    <p class="resume-section" style="white-space: pre-line;">
+                        @ResumeService.Resume.Objective
+                    </p>
+                </section>
+
+                <section>
+                    <h3>Professional Experience</h3>
+                    <p class="resume-section" style="white-space: pre-line;">
+                        @ResumeService.Resume.Experience
+                    </p>
+                </section>
+
+                <section>
+                    <h3>Skills</h3>
+                    <p class="resume-section" style="white-space: pre-line;">
+                        @ResumeService.Resume.Skills
+                    </p>
+                </section>
+
+                <section>
+                    <h3>Education</h3>
+                    <p class="resume-section" style="white-space: pre-line;">
+                        @ResumeService.Resume.Education
+                    </p>
+                </section>
+
+                <section>
+                    <h3>Achievements</h3>
+                    <ul>
+                        @foreach (var a in AchievementList)
+                        {
+                            <li>@a</li>
+                        }
+                    </ul>
+                </section>
+            </div>
+        }
+
+        <div class="mt-4 text-end">
+            <button class="btn btn-success" onclick="window.print()">Export as PDF</button>
+        </div>
+    </div>
+</div>
+
+@code {
+    string[] AchievementList =>
+        string.IsNullOrWhiteSpace(ResumeService.Resume.Achievements)
+            ? Array.Empty<string>()
+            : ResumeService.Resume.Achievements
+                .Split('\n', StringSplitOptions.RemoveEmptyEntries);
+}
